@@ -17,7 +17,7 @@ jobs:
             base-devel
 
       - name: Create non root user
-        run: useradd --no-create-home builder
+        run: useradd --no-create-home builder && passwd -d builder
 
       - name: Checkout the code
         uses: actions/checkout@v4
