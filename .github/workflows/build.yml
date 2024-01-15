@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Build archlinux package
-        uses: mijailr/arch-makepkg-action@1.0.0
-
       - name: Checkout the code
         uses: actions/checkout@v4
+
+      - name: Build archlinux package
+        uses: mijailr/arch-makepkg-action@1.0.0
 
       - name: Upload package
         uses: actions/upload-artifact@v4
