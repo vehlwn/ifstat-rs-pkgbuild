@@ -16,11 +16,14 @@ jobs:
           pacman -Suy --noconfirm --needed \
             base-devel
 
+      - name: Create non root user
+        run: useradd --no-create-home builder
+
       - name: Checkout the code
         uses: actions/checkout@v4
 
       - name: Build Arch Linux package
-        run: makepkg --syncdeps --noconfirm
+        run: sudo -u builder makepkg --syncdeps --noconfirm
 
       - name: Upload package
         uses: actions/upload-artifact@v4
