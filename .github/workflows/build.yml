@@ -22,6 +22,15 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v4
 
+      - name: ls
+        run: ls -lah
+
+      - name: Change ownership
+        run: chown -R builder:builder .
+
+      - name: ls
+        run: ls -lah
+
       - name: Build Arch Linux package
         run: sudo -u builder makepkg --syncdeps --noconfirm
 
