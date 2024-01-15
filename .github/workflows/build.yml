@@ -18,7 +18,7 @@ jobs:
 
       - name: Create non root user
         run: |
-          useradd --no-create-home -G wheel builder
+          useradd --create-home -G wheel builder
           echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
       - name: Checkout the code
