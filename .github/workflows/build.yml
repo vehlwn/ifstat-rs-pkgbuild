@@ -11,28 +11,8 @@ jobs:
     container: archlinux:latest
 
     steps:
-      - name: Install dependencies
-        run: |
-          pacman -Suy --noconfirm --needed \
-            base-devel
-
-      - name: Create non root user
-        run: useradd --no-create-home -G wheel builder && passwd -d builder
-
-      - name: Checkout the code
-        uses: actions/checkout@v4
-
-      - name: ls
-        run: ls -lah
-
-      - name: Change ownership
-        run: chown -R builder:builder .
-
-      - name: ls
-        run: ls -lah
-
-      - name: Build Arch Linux package
-        run: sudo -u builder makepkg --syncdeps --noconfirm
+      - name: Build archlinux package
+        uses: mijailr/arch-makepkg-action@v1
 
       - name: Upload package
         uses: actions/upload-artifact@v4
